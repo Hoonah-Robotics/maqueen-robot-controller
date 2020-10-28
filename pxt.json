@@ -1,0 +1,23 @@
+{
+    "name": "Marqueen robot controller",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "maqueen": "github:dfrobot/pxt-maqueen#v1.3.6",
+        "pxt-comment-block": "github:iowadave/pxt-comment-block#v0.0.4"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md",
+        "main.py"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "blocksprj"
+}
