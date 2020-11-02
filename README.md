@@ -1,3 +1,4 @@
+Simple motor control from micro:bit remote for DFRobot's Maqueen robot
 
 > Open this page at [https://hoonah-robotics.github.io/marqueen-robot-controller/](https://hoonah-robotics.github.io/marqueen-robot-controller/)
 
