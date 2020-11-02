@@ -7,8 +7,8 @@ radio.onReceivedValue(function (name, value) {
     }
 })
 let scalarRight = 0
-let vectorRight = 0
 let scalarLeft = 0
+let vectorRight = 0
 let vectorLeft = 0
 let turn = 0
 let throttle = 0
@@ -17,10 +17,13 @@ radio.setGroup(0)
 basic.showIcon(IconNames.Happy)
 basic.forever(function () {
     comment.comment("THINK: calculate speed and direction for each motor")
-    comment.comment("Scale motor power from 0 to 255")
+    comment.comment("slow down turn without changing drive speed")
+    turn = turn / 3
+    comment.comment("difference between left and right motor speeds")
     vectorLeft = throttle + turn
-    scalarLeft = Math.map(Math.abs(vectorLeft), 0, 40, 0, 255)
     vectorRight = throttle - turn
+    comment.comment("Scale motor power from 0 to 255")
+    scalarLeft = Math.map(Math.abs(vectorLeft), 0, 40, 0, 255)
     scalarRight = Math.map(Math.abs(vectorRight), 0, 40, 0, 255)
     comment.comment("ACT: send speed and direction to motors ")
     if (vectorLeft > 0) {
