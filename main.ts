@@ -17,7 +17,7 @@ radio.setGroup(0)
 basic.showIcon(IconNames.Happy)
 basic.forever(function () {
     comment.comment("THINK: calculate speed and direction for each motor")
-    comment.comment("slow down turn without changing drive speed")
+    comment.comment("slow down turn without changing maximum drive speed")
     turn = turn / 3
     comment.comment("difference between left and right motor speeds")
     vectorLeft = throttle + turn
