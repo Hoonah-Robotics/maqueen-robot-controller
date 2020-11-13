@@ -1,5 +1,6 @@
 radio.onReceivedValue(function (name, value) {
     comment.comment("SENSE: read accelerometer on driver station")
+    comment.comment("range of values: -40 to 40; 0 = STOP")
     if (name == "y") {
         throttle = value
     } else if (name == "x") {
