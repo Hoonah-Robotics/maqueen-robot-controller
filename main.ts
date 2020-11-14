@@ -1,4 +1,6 @@
 radio.onReceivedValue(function (name, value) {
+    comment.comment("SENSE: read accelerometer on driver station")
+    comment.comment("range of values: -40 to 40; 0 = STOP")
     if (name == "y") {
         throttle = value
     } else if (name == "x") {
@@ -11,14 +13,20 @@ let vectorRight = 0
 let vectorLeft = 0
 let turn = 0
 let throttle = 0
+comment.comment("same radio group as driver station")
 radio.setGroup(0)
 basic.showIcon(IconNames.Happy)
 basic.forever(function () {
+    comment.comment("THINK: calculate speed and direction for each motor")
+    comment.comment("slow down turn without changing maximum drive speed")
     turn = turn / 3
+    comment.comment("difference between left and right motor speeds")
     vectorLeft = throttle + turn
     vectorRight = throttle - turn
+    comment.comment("Scale motor power from 0 to 255")
     scalarLeft = Math.map(Math.abs(vectorLeft), 0, 40, 0, 255)
     scalarRight = Math.map(Math.abs(vectorRight), 0, 40, 0, 255)
+    comment.comment("ACT: send speed and direction to motors ")
     if (vectorLeft > 0) {
         maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, scalarLeft)
     } else if (vectorLeft < 0) {

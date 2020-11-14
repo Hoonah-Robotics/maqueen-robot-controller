@@ -5,7 +5,7 @@
         "core": "*",
         "radio": "*",
         "maqueen": "github:dfrobot/pxt-maqueen#v1.3.6",
-        "pxt-comment-block": "github:iowadave/pxt-comment-block#v0.0.4"
+        "pxt-comment-block": "github:hoonah-robotics/pxt-comment-block#v0.0.4"
     },
     "files": [
         "main.blocks",
