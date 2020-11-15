@@ -1,14 +1,18 @@
 radio.onReceivedValue(function (name, value) {
     comment.comment("SENSE: read accelerometer on driver station")
-    comment.comment("range of values: -255 to 255; 0 = STOP")
+    comment.comment("range of x-y values: -255 to 255; 0 = STOP")
+    comment.comment("range of P values: 1, 2, 3; 0 = STOP")
     if (name == "y") {
         throttle = value
     } else if (name == "x") {
         turn = value
+    } else if (name == "P") {
+        powerBand = value
     }
 })
-let vectorRight = 0
-let vectorLeft = 0
+let powerRight = 0
+let powerLeft = 0
+let powerBand = 0
 let turn = 0
 let throttle = 0
 comment.comment("same radio group as driver station")
@@ -18,21 +22,27 @@ basic.forever(function () {
     comment.comment("THINK: calculate speed and direction for each motor")
     comment.comment("slow down turn without changing maximum drive speed")
     turn = turn / 3
-    comment.comment("difference between left and right motor speeds")
-    vectorLeft = throttle + turn
-    vectorRight = throttle - turn
+    comment.comment("Arcade drive: difference between left and right motor speeds")
+    powerLeft = throttle + turn
+    powerRight = throttle - turn
+    comment.comment("scale power for powerBand")
+    powerLeft = powerLeft / powerBand
+    powerRight = powerRight / powerBand
+    comment.comment("keep calculated values within valid motor values")
+    powerLeft = Math.constrain(powerLeft, -255, 255)
+    powerRight = Math.constrain(powerRight, -255, 255)
     comment.comment("ACT: send speed and direction to motors ")
-    if (vectorLeft > 0) {
-        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, vectorLeft)
-    } else if (vectorLeft < 0) {
-        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, Math.abs(vectorLeft))
+    if (powerLeft > 0) {
+        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, powerLeft)
+    } else if (powerLeft < 0) {
+        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, Math.abs(powerLeft))
     } else {
         maqueen.motorStop(maqueen.Motors.M1)
     }
-    if (vectorRight > 0) {
-        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, vectorRight)
-    } else if (vectorRight < 0) {
-        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, Math.abs(vectorRight))
+    if (powerRight > 0) {
+        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, powerRight)
+    } else if (powerRight < 0) {
+        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, Math.abs(powerRight))
     } else {
         maqueen.motorStop(maqueen.Motors.M2)
     }
