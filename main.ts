@@ -1,13 +1,17 @@
 radio.onReceivedValue(function (name, value) {
-    comment.comment("SENSE: read accelerometer on driver station")
-    comment.comment("range of x-y values: -255 to 255; 0 = STOP")
-    comment.comment("range of P values: 1, 2, 3; 0 = STOP")
+    comment.comment("SENSE: read sensors on driver station")
     if (name == "y") {
+        comment.comment("X-Y accelerometer values: -255 to 255; 0 = STOP")
         throttle = value
     } else if (name == "x") {
         turn = value
     } else if (name == "P") {
+        comment.comment("Power values: 1, 2, 3; 0 = STOP")
         powerBand = value
+    } else if (name == "AB") {
+        comment.comment("both buttons pressed")
+    } else if (name == "S") {
+        comment.comment("\"Shake\" driver controller")
     }
 })
 let powerRight = 0

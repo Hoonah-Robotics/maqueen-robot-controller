@@ -1,11 +1,12 @@
 {
-    "name": "Marqueen robot controller",
+    "name": "Maqueen robot controller",
     "description": "",
     "dependencies": {
         "core": "*",
         "radio": "*",
         "maqueen": "github:dfrobot/pxt-maqueen#v1.3.6",
-        "pxt-comment-block": "github:hoonah-robotics/pxt-comment-block#v0.0.4"
+        "pxt-comment-block": "github:hoonah-robotics/pxt-comment-block#v0.0.4",
+        "neopixel": "github:microsoft/pxt-neopixel#v0.7.3"
     },
     "files": [
         "main.blocks",
