@@ -1,3 +1,9 @@
+function Dance () {
+    comment.comment("blocks to use here: Maqueen:motor, Basic:pause, Loops:repeat  ")
+}
+function Horns () {
+    comment.comment("blocks to use here: Music, Maqueen:Lights")
+}
 radio.onReceivedValue(function (name, value) {
     comment.comment("SENSE: read sensors on driver station")
     if (name == "y") {
@@ -10,8 +16,10 @@ radio.onReceivedValue(function (name, value) {
         powerBand = value
     } else if (name == "AB") {
         comment.comment("both buttons pressed")
+        Horns()
     } else if (name == "S") {
         comment.comment("\"Shake\" driver controller")
+        Dance()
     }
 })
 let powerRight = 0
