@@ -3,6 +3,7 @@ function Dance () {
 }
 function Horns () {
     comment.comment("blocks to use here: Music, Maqueen:Lights")
+    comment.comment("Make sure buzzer switch is ON!!")
 }
 radio.onReceivedValue(function (name, value) {
     comment.comment("SENSE: read sensors on driver station")
