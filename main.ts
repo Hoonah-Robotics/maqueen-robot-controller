@@ -1,4 +1,5 @@
 function Dance () {
+    comment.comment("when you shake the Drive Controller")
     comment.comment("blocks to use here: Maqueen:motor, Basic:pause, Loops:repeat  ")
     comment.comment("This is an simple example")
     for (let index = 0; index < 4; index++) {
@@ -10,7 +11,10 @@ function Dance () {
     }
 }
 function Horns () {
-	
+    comment.comment("when A+B is pressed on Drive Controller")
+    comment.comment("blocks to use here: Music, Maqueen:Lights")
+    comment.comment("Make sure buzzer switch is ON!!")
+    music.playMelody("A C5 B F - - - - ", 120)
 }
 radio.onReceivedValue(function (name, value) {
     comment.comment("SENSE: read sensors on driver station")
