@@ -1,7 +1,7 @@
 function Dance () {
     comment.comment("when you shake the Drive Controller")
     comment.comment("blocks to use here: Maqueen:motor, Basic:pause, Loops:repeat  ")
-    comment.comment("This is an simple example")
+    comment.comment("This is an simple example - replace the blocks with yours ")
     for (let index = 0; index < 4; index++) {
         maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 182)
         maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 177)
@@ -14,6 +14,7 @@ function Horns () {
     comment.comment("when A+B is pressed on Drive Controller")
     comment.comment("blocks to use here: Music, Maqueen:Lights")
     comment.comment("Make sure buzzer switch is ON!!")
+    comment.comment("This is an simple example - replace the blocks with yours ")
     music.playMelody("A C5 B F - - - - ", 120)
 }
 radio.onReceivedValue(function (name, value) {
