@@ -29,9 +29,11 @@ radio.onReceivedValue(function (name, value) {
         powerBand = value
     } else if (name == "AB") {
         comment.comment("both buttons pressed")
+        basic.showIcon(IconNames.EigthNote)
         Horns()
     } else if (name == "S") {
         comment.comment("\"Shake\" driver controller")
+        basic.showIcon(IconNames.StickFigure)
         Dance()
     }
 })
