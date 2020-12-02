@@ -2,6 +2,8 @@ function Dance () {
     comment.comment("when you shake the Drive Controller")
     comment.comment("blocks to use here: Maqueen:motor, Basic:pause, Loops:repeat  ")
     comment.comment("This is an simple example - replace the blocks with yours ")
+    powerTemp = powerBand
+    powerBand = 0
     for (let index = 0; index < 4; index++) {
         maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 255)
         maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 255)
@@ -12,6 +14,7 @@ function Dance () {
         maqueen.motorStop(maqueen.Motors.M1)
         maqueen.motorStop(maqueen.Motors.M2)
     }
+    powerBand = powerTemp
 }
 function Horns () {
     comment.comment("when A+B is pressed on Drive Controller")
@@ -42,9 +45,10 @@ radio.onReceivedValue(function (name, value) {
 })
 let powerRight = 0
 let powerLeft = 0
-let powerBand = 0
 let turn = 0
 let throttle = 0
+let powerBand = 0
+let powerTemp = 0
 comment.comment("same radio group as driver station")
 radio.setGroup(0)
 basic.showIcon(IconNames.Happy)
