@@ -33,6 +33,10 @@ radio.onReceivedValue(function (name, value) {
     } else if (name == "P") {
         comment.comment("Power values: 1, 2, 3; 0 = STOP")
         powerBand = value
+        if (!(powerBand)) {
+            maqueen.motorStop(maqueen.Motors.M1)
+            maqueen.motorStop(maqueen.Motors.M2)
+        }
     } else if (name == "AB") {
         comment.comment("both buttons pressed")
         basic.showIcon(IconNames.EigthNote)
@@ -66,18 +70,20 @@ basic.forever(function () {
     powerLeft = Math.constrain(powerLeft, -255, 255)
     powerRight = Math.constrain(powerRight, -255, 255)
     comment.comment("ACT: send speed and direction to motors ")
-    if (powerLeft > 0) {
-        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, powerLeft)
-    } else if (powerLeft < 0) {
-        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, Math.abs(powerLeft))
-    } else {
-        maqueen.motorStop(maqueen.Motors.M1)
-    }
-    if (powerRight > 0) {
-        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, powerRight)
-    } else if (powerRight < 0) {
-        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, Math.abs(powerRight))
-    } else {
-        maqueen.motorStop(maqueen.Motors.M2)
+    if (powerBand) {
+        if (powerLeft > 0) {
+            maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, powerLeft)
+        } else if (powerLeft < 0) {
+            maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, Math.abs(powerLeft))
+        } else {
+            maqueen.motorStop(maqueen.Motors.M1)
+        }
+        if (powerRight > 0) {
+            maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, powerRight)
+        } else if (powerRight < 0) {
+            maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, Math.abs(powerRight))
+        } else {
+            maqueen.motorStop(maqueen.Motors.M2)
+        }
     }
 })
