@@ -3,8 +3,11 @@ function Dance () {
     comment.comment("blocks to use here: Maqueen:motor, Basic:pause, Loops:repeat  ")
     comment.comment("This is an simple example - replace the blocks with yours ")
     for (let index = 0; index < 4; index++) {
-        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 182)
-        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 177)
+        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 255)
+        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 255)
+        basic.pause(500)
+        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, 255)
+        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 255)
         basic.pause(500)
         maqueen.motorStop(maqueen.Motors.M1)
         maqueen.motorStop(maqueen.Motors.M2)
