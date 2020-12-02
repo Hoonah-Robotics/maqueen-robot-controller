@@ -47,6 +47,16 @@ radio.onReceivedValue(function (name, value) {
         Dance()
     }
 })
+function OLED () {
+    comment.comment("pixels: x=127 (wide), y=63 (tall) ")
+    OLED12864_I2C.rect(0, 0, 127, 63, 1)
+    OLED12864_I2C.rect(3, 3, 124, 60, 1)
+    comment.comment("characters: col=120 (wide), row=7 (tall) ")
+    OLED12864_I2C.String("Hello!", 48, 1, 1)
+    OLED12864_I2C.String("My Name Is", 34, 2, 1)
+    OLED12864_I2C.hline(3, 30, 120, 1)
+    OLED12864_I2C.String("Mr. McLuckie", 30, 5, 1)
+}
 let powerRight = 0
 let powerLeft = 0
 let turn = 0
@@ -56,6 +66,7 @@ let powerTemp = 0
 comment.comment("same radio group as driver station")
 radio.setGroup(0)
 basic.showIcon(IconNames.Happy)
+OLED12864_I2C.init()
 basic.forever(function () {
     comment.comment("THINK: calculate speed and direction for each motor")
     comment.comment("slow down turn without changing maximum drive speed")
