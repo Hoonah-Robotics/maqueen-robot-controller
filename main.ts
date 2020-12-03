@@ -5,14 +5,11 @@ function Dance () {
     powerTemp = powerBand
     powerBand = 0
     for (let index = 0; index < 4; index++) {
-        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 255)
-        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 255)
+        maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 255)
         basic.pause(500)
-        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, 255)
-        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 255)
+        maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CCW, 255)
         basic.pause(500)
-        maqueen.motorStop(maqueen.Motors.M1)
-        maqueen.motorStop(maqueen.Motors.M2)
+        maqueen.motorStop(maqueen.Motors.All)
     }
     powerBand = powerTemp
 }
@@ -55,7 +52,7 @@ function OLED () {
     OLED12864_I2C.String("Hello!", 48, 1, 1)
     OLED12864_I2C.String("My Name Is", 34, 2, 1)
     OLED12864_I2C.hline(3, 30, 120, 1)
-    OLED12864_I2C.String("Mr. McLuckie", 30, 5, 1)
+    OLED12864_I2C.String("____________", 30, 5, 1)
 }
 let powerRight = 0
 let powerLeft = 0
@@ -67,6 +64,7 @@ comment.comment("same radio group as driver station")
 radio.setGroup(0)
 basic.showIcon(IconNames.Happy)
 OLED12864_I2C.init()
+OLED()
 basic.forever(function () {
     comment.comment("THINK: calculate speed and direction for each motor")
     comment.comment("slow down turn without changing maximum drive speed")
