@@ -7,8 +7,9 @@
         "maqueen": "github:dfrobot/pxt-maqueen#v1.3.6",
         "pxt-comment-block": "github:hoonah-robotics/pxt-comment-block#v0.0.4",
         "neopixel": "github:microsoft/pxt-neopixel#v0.7.3",
-        "microphone": "*",
-        "OLED12864_I2C": "github:hoonah-robotics/pxt-oled#v1.0.0"
+        "OLED12864_I2C": "github:hoonah-robotics/pxt-oled#v1.0.0",
+        "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.1",
+        "microphone": "*"
     },
     "files": [
         "main.blocks",
