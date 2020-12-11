@@ -44,7 +44,6 @@ radio.onReceivedValue(function (name, value) {
         Dance()
     }
 })
-let servo = 0
 let powerRight = 0
 let powerLeft = 0
 let turn = 0
@@ -83,14 +82,5 @@ basic.forever(function () {
         } else {
             maqueen.motorStop(maqueen.Motors.M2)
         }
-    }
-    if (servo) {
-        maqueen.servoRun(maqueen.Servos.S1, 0)
-        basic.pause(200)
-        servo = 0
-    } else {
-        maqueen.servoRun(maqueen.Servos.S1, 180)
-        basic.pause(200)
-        servo = 1
     }
 })
